@@ -6,6 +6,7 @@
 
 - We did not change README file in the baseline folder as it's for codes of the original paper that got released on github.
 
+- For the option, maxlen is the longest history we would consider; threshold_user is the  
 1. To run SSE-PT, do
 ```
 python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" 
