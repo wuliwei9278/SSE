@@ -14,9 +14,9 @@ Note that:
 - PT stands for Personalized Transformer
 
 ## Instructions on how to run the code:
-1. For explicit feedback setting, `cd /SSE-MF` and follow README file there
-2. For implicit feedback setting, `cd /SSE-BPR` and follow README file there
-3. For sequential recommendation setting, `cd /SSE-PT` and follow README file there
+1. For explicit feedback setting, `cd SSE-MF` and follow README file there
+2. For implicit feedback setting, `cd SSE-BPR` and follow README file there
+3. For sequential recommendation setting, `cd SSE-PT` and follow README file there
 
 
 ## System Requirements:

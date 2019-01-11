@@ -1,4 +1,4 @@
-# Codes for SSE-PT and PT in the paper submission
+# Codes for PT and SSE-PT in the paper submission
 
 - Codes should work under both python2/python3, we include movielens1m data as reference.
 
@@ -23,7 +23,7 @@ python main.py --dataset=ml-1m --batch_size=128 --train_dir="default"
 --threshold_user=1.0 --threshold_item=1.0 --print_freq=100
 ```
 
-3. To baseline SASRec, go to baseline folder and type below:
+3. To run uaseline SASRec, go to baseline folder and type below:
 ```
 python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" 
 --hidden_units=100 --num_blocks=2 --maxlen=200 --dropout_rate=0.2 --num_head=1 
