@@ -1,4 +1,4 @@
-# Stochastic Shared Embeddings (SSE) for Better Recommendations
+# Stochastic Shared Embeddings for Better Recommendations
 
 
 ## Description: 
@@ -7,6 +7,11 @@ This repo consists of 3 folders:
 2. SSE-BPR for Implicit Feedback
 3. SSE-PT for Sequential Recommendation
 
+Note that:
+- SSE stands for Stochastic Shared Embeddings
+- MF stands for Matrix Factorization
+- BPR stands for Bayseian Personalized Ranking
+- PT stands for Personalized Transformer
 
 ## Instructions on how to run the code:
 1. For explicit feedback setting, `cd /SSE-MF` and follow README file there
