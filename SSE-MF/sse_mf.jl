@@ -36,66 +36,6 @@ function compute_RMSE_train(U, V, X, r, d1, d2, rows, vals, cols)
 	return (res / n)^0.5
 end
 
-function compute_RMSE(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t, threshold)
-    res = 0.0
-    n = 0.0
-
-    u_bar = zeros(r)
-    for i = 1:d1
-        u_bar += U[:, i]
-    end
-    u_bar /= d1
-
-    for i = 1:d1
-        tmp = nzrange(Y, i)
-        d2_bar = rows_t[tmp];
-        vals_d2_bar = vals_t[tmp];
-        #ui = U[:, i]
-        #ui = U[:, i] * threshold + (1 - threshold) * u_bar
-        if rand(1)[1] > threshold
-            i = rand(1:d1)
-        end
-        ui = U[:, i]
-        len = size(d2_bar)[1]
-        for j = 1:len
-            J = d2_bar[j];
-            vj = V[:, J]
-            res += (vals_d2_bar[j] - dot(ui,vj))^2
-            n += 1.0
-        end
-    end
-    return (res / n)^0.5
-end
-
-function compute_RMSE_train(U, V, X, r, d1, d2, rows, vals, cols, threshold)
-    res = 0.0
-    n = 0.0
-    u_bar = zeros(r)
-    for i = 1:d1
-        u_bar += U[:, i]
-    end
-    u_bar /= d1
-    for i = 1:d1
-        tmp = nzrange(X, i)
-        d2_bar = rows[tmp];
-        vals_d2_bar = vals[tmp];
-        #ui = U[:, i]
-        #ui = U[:, i] * threshold + (1 - threshold) * u_bar
-        if rand(1)[1] > threshold
-            i = rand(1:d1)
-        end
-        ui = U[:, i]
-        len = size(d2_bar)[1]
-        for j = 1:len
-            J = d2_bar[j];
-            vj = V[:, J]
-            res += (vals_d2_bar[j] - dot(ui,vj))^2
-            n += 1.0
-        end
-    end
-    return (res / n)^0.5
-end
-
 function objective(U, V, X, d1, lambda, rows, vals)
 	res = 0.0
 	res = lambda * (vecnorm(U) ^ 2 + vecnorm(V) ^ 2)
