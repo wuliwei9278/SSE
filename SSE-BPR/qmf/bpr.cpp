@@ -112,12 +112,8 @@ int main(int argc, char** argv) {
   if (!FLAGS_test_dataset.empty()) {
     LOG(INFO) << "loading test data";
     qmf::DatasetReader testReader(FLAGS_test_dataset);
-    LOG(INFO) << "1";
     std::vector<qmf::DatasetElem> tmp = testReader.readAll();
-    LOG(INFO) << "1.5";
     engine.initTest(tmp);
-    //engine.initTest(testReader.readAll());
-    LOG(INFO) << "2";
   }
 
   LOG(INFO) << "training";

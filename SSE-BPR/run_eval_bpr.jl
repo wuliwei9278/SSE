@@ -146,8 +146,8 @@ function compute_precision(U, V, X, Y, d1, d2, rows, vals, rows_t, vals_t, zero_
     return precision[1], precision[2], precision[3]
 end
 
-train = "ml1m_oc_50_train_ratings.csv"
-test = "ml1m_oc_50_test_ratings.csv"
+train = "ml1m-50-oc/ml1m_oc_50_train_ratings.csv"
+test = "ml1m-50-oc/ml1m_oc_50_test_ratings.csv"
 X = readdlm(train, ',' , Int64);
 x = vec(X[:,1]);
 y = vec(X[:,2]);
