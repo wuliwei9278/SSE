@@ -1,4 +1,3 @@
-import random
 import numpy as np
 from multiprocessing import Process, Queue
 
@@ -10,9 +9,7 @@ def random_neq(l, r, s):
     return t
 
 
-def sample_function(user_train, usernum, itemnum, batch_size, maxlen,  
-                    threshold_user, threshold_item,
-                    result_queue, SEED):
+def sample_function(user_train, usernum, itemnum, batch_size, maxlen, result_queue, SEED):
     def sample():
 
         user = np.random.randint(1, usernum + 1)
@@ -25,24 +22,14 @@ def sample_function(user_train, usernum, itemnum, batch_size, maxlen,
         idx = maxlen - 1
 
         ts = set(user_train[user])
-
         for i in reversed(user_train[user][:-1]):
             seq[idx] = i
-            
-            # SSE for user side (2 lines)
-            if random.random() > threshold_item:
-                nxt = np.random.randint(1, itemnum + 1)
-            
             pos[idx] = nxt
             if nxt != 0: neg[idx] = random_neq(1, itemnum + 1, ts)
             nxt = i
             idx -= 1
             if idx == -1: break
-        
-        # SSE for item side (2 lines)
-        if random.random() > threshold_user:
-            user = np.random.randint(1, usernum + 1)
-             
+
         return (user, seq, pos, neg)
 
     np.random.seed(SEED)
@@ -55,8 +42,7 @@ def sample_function(user_train, usernum, itemnum, batch_size, maxlen,
 
 
 class WarpSampler(object):
-    def __init__(self, User, usernum, itemnum, batch_size=64, maxlen=10, 
-                 threshold_user=1.0, threshold_item=1.0, n_workers=1):
+    def __init__(self, User, usernum, itemnum, batch_size=64, maxlen=10, n_workers=1):
         self.result_queue = Queue(maxsize=n_workers * 10)
         self.processors = []
         for i in range(n_workers):
@@ -66,8 +52,6 @@ class WarpSampler(object):
                                                       itemnum,
                                                       batch_size,
                                                       maxlen,
-                                                      threshold_user,
-                                                      threshold_item,
                                                       self.result_queue,
                                                       np.random.randint(2e9)
                                                       )))
