@@ -31,7 +31,7 @@ Note: The first 4 arguments are the same as MF. The last 2 arguments are thresho
 ### To run best method (l2 + SSE + dropout)
 
 ```
-include("sse_dropout_sgd_mf")
+include("code/sse_dropout_sgd_mf")
 main("data/ml1m_train_ratings.csv", "data/ml1m_test_ratings.csv", 100, 0.1, 0.995, 0.9)
 ```
 
