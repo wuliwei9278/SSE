@@ -13,7 +13,7 @@ cmake .
 make
 ```
 
-### Running the codes
+## Running the codes
 We include movielens1m data in `ml1m-50-oc` as reference.
 
 To run the codes:
@@ -32,3 +32,5 @@ Options for BPR in the shell script:
 * `--num_negative_samples` (default 3): number of random negatives sampled for each positive item
 * `--user_threshold` (default 1.0): with probability 1 - user_threshold to replace user index
 * `--item_threshold` (default 1.0): with probability 1 - user_threshold to replace item index
+
+For more details, refer to the original README in `qmf` folder or the original github repo.
