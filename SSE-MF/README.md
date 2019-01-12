@@ -35,4 +35,4 @@ include("sse_dropout_sgd_mf")
 main("data/ml1m_train_ratings.csv", "data/ml1m_test_ratings.csv", 100, 0.1, 0.995, 0.9)
 ```
 
-Note: The sixth parameter is the dropout threshould. (eg. 0.9 means the dropout rate is `1-0.9 = 0.1`)  
+Note: For simplicity reason, here we combine the two arguments in SSE-MF into one argument 0.995 and the last argument 0.9 represents `1 - dropout_probability`, i.e. here we use dropout probability 0.1 for both user and item embeddings.
