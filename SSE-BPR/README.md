@@ -23,7 +23,10 @@ To run the codes for BPR:
 
 To run the codes for SSE-BPR:
 1. `vim rep_bpr.sh` and change p1 and p2 to `p1=0.9` and `p2=0.99`, because for SSE-BPR, the option `--user_threshold` and `--item_threshold` become 2 additional parameters requires tuning 
-2. do `./rep_bpr.sh`
+2. type
+```
+./rep_bpr.sh
+```
 
 
 Options for BPR in the shell script:
