@@ -24,7 +24,7 @@ python main.py --dataset=ml-1m --batch_size=128 --train_dir="default"
   -  `--item_hidden_units=50` specifies number of hidden units for items
   -  `--num_block=2` specifies number of block stacked, we use 2 in the experiments 
   -  `--maxlen=200` refers to longest history T we consider in the paper
-  -  `--dropout_rate=0.2` specifies dropout rate
+  -  `--dropout_rate=0.2` specifies dropout probability of each neuron
   -  `--lr=0.001` specifies learning rate
   -  `--threshold_user=0.08` specifies the alpha_u in the paper, i.e. `1 - the replacement probability for user`
   -  `--threshold_item=0.9` specifies the alpha_i in the paper, i.e. `1 - the replacement probability for item`
