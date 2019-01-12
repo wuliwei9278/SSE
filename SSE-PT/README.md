@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/quora/qmf.svg?branch=master)](https://travis-ci.org/quora/qmf)
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 
 # Codes for SASRec, PT and SSE-PT 
