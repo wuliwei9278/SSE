@@ -6,7 +6,7 @@
 
 
 ## Steps for running the codes
-- To run SSE-PT, do
+### To run SSE-PT, do
 ```
 python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" 
 --user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 
@@ -26,7 +26,7 @@ python main.py --dataset=ml-1m --batch_size=128 --train_dir="default"
   -  `--threshold_item=0.9` specifies the alpha_i in the paper, i.e. `1 - the replacement probability for item`
   -  `--print_freq=100` specifies how many epochs evaluation is done and results get printed
 
-- To run PT without SSE, simply set `threshold_user=1.0 --threshold_item=1.0`, i.e. do below:
+### To run PT without SSE, simply set `threshold_user=1.0 --threshold_item=1.0`, i.e. do below:
 ```
   python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" 
   --user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 
@@ -34,7 +34,7 @@ python main.py --dataset=ml-1m --batch_size=128 --train_dir="default"
   --threshold_user=1.0 --threshold_item=1.0 --print_freq=100
 ```
 
-- To run uaseline SASRec, go to baseline folder and type below:
+### To run uaseline SASRec, go to baseline folder and type below:
 ⋅⋅⋅  ```
   python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" 
   --hidden_units=100 --num_blocks=2 --maxlen=200 --dropout_rate=0.2 --num_head=1 
