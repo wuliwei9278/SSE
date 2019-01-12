@@ -1,6 +1,5 @@
-[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 # Stochastic Shared Embeddings for Better Recommendations
-
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 
 ## Description: 
 This repo consists of 3 folders:
