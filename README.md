@@ -1,3 +1,4 @@
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
 # Stochastic Shared Embeddings for Better Recommendations
 
 
