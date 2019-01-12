@@ -16,21 +16,22 @@
 2. Go to the folder containing ```data``` and ```code``` and use command line to start Julia:
 ```$ julia```
 
-3. To run MF, do
+3.
+- To run MF, do
 ```
 include("code/mf.jl")
 main("data/ml1m_train_ratings.csv", "data/ml1m_test_ratings.csv", 100, 0.1)
 ```
 Note: The third paramter ```100``` is the rank we choose for the movielens1m data. The fourth parameter ```0.1``` is the l_2 regularization lambda.
  
-To run SSE-MF do
+- To run SSE-MF, do
 ```
 include("code/sse_mf.jl")
 main("data/ml1m_train_ratings.csv", "data/ml1m_test_ratings.csv", 100, 0.1, 0.995)
 ```
 Note: The fifth parameter is the user and item threshold. (eg. ```0.995``` means the replacement probability of both user side and item side are ```1-0.995 = 0.005```)
 
-3. To run the l_2 + Dropout + SSE, do
+- To run the l_2 + Dropout + SSE, do
 ```
 include("sse_dropout_sgd_mf")
 main("data/ml1m_train_ratings.csv", "data/ml1m_test_ratings.csv", 100, 0.1, 0.995, 0.9)
