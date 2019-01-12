@@ -12,10 +12,10 @@
 Use Command
 
 ```
-python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" 
---user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 
---dropout_rate=0.2 --num_head=1 --lr=0.001 --num_epochs=2001 --gpu=0 
---threshold_user=0.08 --threshold_item=0.9 --print_freq=100
+  python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" 
+  --user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 
+  --dropout_rate=0.2 --num_head=1 --lr=0.001 --num_epochs=2001 --gpu=0 
+  --threshold_user=0.08 --threshold_item=0.9 --print_freq=100
 ```
 , where 
   - `--dataset==ml-1m` specifies dataset name in data folder 
