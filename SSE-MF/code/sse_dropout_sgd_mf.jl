@@ -170,46 +170,25 @@ function update(U, V, X, r, d1, d2, lambda, rows, vals, stepsize, cols, threshol
 	#j = rand(1:d2)
 	#eij = X[j, i] - dot(U[:,i], V[:,j])
     
-    if rand(1)[1] > threshold
-        i = rand(1:d1)
-    end
-    if rand(1)[1] > threshold
-        j = rand(1:d2)
-    end
+	if rand(1)[1] > threshold
+		i = rand(1:d1)
+	end
+	if rand(1)[1] > threshold
+		j = rand(1:d2)
+	end
 	
-    eij = vals[l] - dot(U[:,i], V[:,j])
+	eij = vals[l] - dot(U[:,i], V[:,j])
 	
-    #ui = U[:,i] + stepsize * (eij * V[:,j] - lambda * U[:,i])
-    #vj = V[:,j] + stepsize * (eij * U[:,i] - lambda * V[:,j])
-    #ui = zeros(r)
-    #for k in 1:r
-    #    if rand(1)[1] <= p
-    #        ui[k] = U[k,i] + stepsize * (eij * V[k,j] - lambda * U[k,i]) / p
-    #    else
-    #        ui[k] = U[k,i]
-    #    end
-    #end
-    
-    #vj = zeros(r)
-    #for k in 1:r
-    #    if rand(1)[1] <= p
-    #        vj[k] = V[k,j] + stepsize * (eij * U[k,i] - lambda * V[k,j]) / p
-    #    else
-    #        vj[k] = V[k,j]
-    #    end
-    #end
 
 	for k in 1:r
-		#U[k, i] = ui[k]
-        if rand(1)[1] <= p
-            U[k, i] +=  stepsize * (eij * V[k,j] - lambda * U[k,i]) / p
-        end
+		if rand(1)[1] <= p
+			U[k, i] +=  stepsize * (eij * V[k,j] - lambda * U[k,i]) / p
+		end
 	end
 	for k in 1:r
-		#V[k, j] = vj[k]
-        if rand(1)[1] <= p
-            V[k,j] += stepsize * (eij * U[k,i] - lambda * V[k,j]) / p
-        end
+		if rand(1)[1] <= p
+			V[k,j] += stepsize * (eij * U[k,i] - lambda * V[k,j]) / p
+		end
 	end
 	#U[:,i] = ui
 	#V[:,j] = vj
@@ -236,7 +215,7 @@ function main(train, test, r, lambda, threshold, p)
 	println("Training dataset ", train, " and test dataset ", test, " are loaded. \n There are ", n, " users and ", msize, " items in the dataset.")
 	#n = 1496; msize = 3952; 
 	#n = 12851; msize = 65134
-    #n = 221004; msize = 17771
+	#n = 221004; msize = 17771
 	X = sparse(x, y, v, n, msize); # userid by movieid
 	Y = sparse(xx, yy, vv, n, msize);
 	# julia column major 
@@ -288,7 +267,7 @@ function main(train, test, r, lambda, threshold, p)
 
 	#stepsize = 0.0001
 	stepsize = 0.005
-    totaltime = 0.00000;
+        totaltime = 0.00000;
 	#println("iter time objective_function pairwise_error NDCG RMSE")
 	println("iter time objective_function train_RMSE test_RMSE")
 
@@ -298,9 +277,9 @@ function main(train, test, r, lambda, threshold, p)
 	rmse = compute_RMSE(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t)
 	rmse_tr = compute_RMSE_train(U, V, X, r, d1, d2, rows, vals, cols)
 	#println("[", 0, ", ", totaltime, ", ", nowobj, ", ", pairwise_error, ", ", ndcg, ", ", rmse, ", ", rmse_tr, "],")
-    println("[", 0, ", ", totaltime, ", ", nowobj, ", ", rmse, ", ", rmse_tr, "],")    
+	println("[", 0, ", ", totaltime, ", ", nowobj, ", ", rmse, ", ", rmse_tr, "],")    
 
-    #for iter in 1:150000000
+	#for iter in 1:150000000
 	for iter in 1:3000000000
 		tic();
 
@@ -316,21 +295,19 @@ function main(train, test, r, lambda, threshold, p)
 
 		#pairwise_error = compute_pairwise_error(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t)
 		#ndcg = compute_NDCG(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t, ndcg_k)
-	 	if iter % 3000000 == 0
-	 	#if iter % 10000000 == 0
-        #if iter % 100000000 == 0
-            #threshold += (1 - threshold) / 3
+	 	#if iter % 3000000 == 0
+	 	if iter % 10000000 == 0
+        	#if iter % 100000000 == 0
+            		#threshold += (1 - threshold) / 3
 	 		nowobj = objective(U, V, X, d1, lambda, rows, vals)
 	 		#pairwise_error, ndcg = compute_pairwise_error_ndcg(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t, ndcg_k)
 	 		rmse = compute_RMSE(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t)
 	 		rmse_tr = compute_RMSE_train(U, V, X, r, d1, d2, rows, vals, cols)
 			#rmse = compute_RMSE(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t, threshold)
-            #rmse_tr = compute_RMSE_train(U, V, X, r, d1, d2, rows, vals, cols, threshold)
-            #println("[", iter, ", ", totaltime, ", ", nowobj, ", ", pairwise_error, ", ", ndcg, ", ", rmse_tr, ", ", rmse, "],")
-	 	    println("[", iter, ", ", totaltime, ", ", nowobj, ", ", rmse_tr, ", ", rmse, "],")
-        end
-	 	
-
+			#rmse_tr = compute_RMSE_train(U, V, X, r, d1, d2, rows, vals, cols, threshold)
+			#println("[", iter, ", ", totaltime, ", ", nowobj, ", ", pairwise_error, ", ", ndcg, ", ", rmse_tr, ", ", rmse, "],")
+			println("[", iter, ", ", totaltime, ", ", nowobj, ", ", rmse_tr, ", ", rmse, "],")
+		end
 	end
-#	return V, U
+	return V, U
 end

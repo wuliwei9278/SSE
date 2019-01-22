@@ -107,18 +107,18 @@ function update(U, V, X, r, d1, d2, lambda, rows, vals, stepsize, cols, threshol
 	j = rows[l]
 	i = cols[l]
 
-    # SSE for user side
-    if rand(1)[1] > threshold_user
-        i = rand(1:d1)
-    end
+	# SSE for user side
+	if rand(1)[1] > threshold_user
+		i = rand(1:d1)
+	end
     
-    # SSE for item side
-    if rand(1)[1] > threshold_item
-        j = rand(1:d2)
-    end
+    	# SSE for item side
+	if rand(1)[1] > threshold_item
+		j = rand(1:d2)
+	end
 	
-    eij = vals[l] - dot(U[:,i], V[:,j])
-    ui = U[:,i] + stepsize * (eij * V[:,j] - lambda * U[:,i])
+	eij = vals[l] - dot(U[:,i], V[:,j])
+	ui = U[:,i] + stepsize * (eij * V[:,j] - lambda * U[:,i])
 	vj = V[:,j] + stepsize * (eij * U[:,i] - lambda * V[:,j])
 	for k in 1:r
 		U[k, i] = ui[k]
@@ -179,10 +179,10 @@ function main(train, test, r, lambda, threshold_user, threshold_item)
 
 	# initialize U, V
 	U = randn(r, d1); 
-    V = randn(r, d2);
+	V = randn(r, d2);
 
 	stepsize = 0.01
-    totaltime = 0.00000;
+	totaltime = 0.00000;
 	println("iter time objective_function train_RMSE test_RMSE")
 
 	
@@ -202,8 +202,8 @@ function main(train, test, r, lambda, threshold_user, threshold_item)
 	 		nowobj = objective(U, V, X, d1, lambda, rows, vals)
 	 		rmse = compute_RMSE(U, V, Y, r, d1, d2, rows_t, vals_t, cols_t)
 	 		rmse_tr = compute_RMSE_train(U, V, X, r, d1, d2, rows, vals, cols)
-	 	    println("[", iter, ", ", totaltime, ", ", nowobj, ", ", rmse_tr, ", ", rmse, "],")
-        end
+			println("[", iter, ", ", totaltime, ", ", nowobj, ", ", rmse_tr, ", ", rmse, "],")
+		end
 	end
 	return V, U
 end
