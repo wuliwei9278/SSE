@@ -18,7 +18,7 @@ To install Julia 0.6
 wget https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.4-linux-x86_64.tar.gz
 tar xvzf julia-0.6.4-linux-x86_64.tar.gz
 ```
-Find the path containing julia binary (in extracted folder `julia-9d11f62bcb/bin`), follow instructions in https://en.wikibooks.org/wiki/Introducing_Julia/Getting_started and confirm command `julia` works on command line.
+Find the path containing julia binary (in extracted folder `julia-9d11f62bcb/bin`), follow instructions in https://en.wikibooks.org/wiki/Introducing_Julia/Getting_started (I normally just add a new julia alias in .bashrc) and confirm `julia` works on command line.
 
 
 ## Running the codes
