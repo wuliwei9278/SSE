@@ -14,7 +14,7 @@ make
 ```
 
 ## Running the codes
-We include movielens1m data in `ml1m-50-oc` as reference.
+We include preprocessed Movielens 1M data in `ml1m-50-oc` as reference.
 
 To run the codes for BPR:
 ```
