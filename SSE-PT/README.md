@@ -2,7 +2,7 @@
 
 - Codes should work under both python2/python3, we include movielens1m data as reference.
 - We tested using tensorflow 1.11.0 with Python 2.7.13 & 3.5.3 with Nvdia P100 and V100 GPU.
-- We did not change README file in the baseline folder as it's for codes of the original paper that got released on github.
+- We did not change README file in the baseline folder as it's for codes of our baseline which got released on github. One can find other 3 datasets mentioned in paper in their github repo.
 
 
 ## Steps for running the codes
