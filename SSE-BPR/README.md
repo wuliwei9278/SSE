@@ -20,11 +20,7 @@ tar xvzf julia-0.6.4-linux-x86_64.tar.gz
 ```
 Find the path containing julia binary (in extracted folder `julia-9d11f62bcb/bin`), follow instructions in https://en.wikibooks.org/wiki/Introducing_Julia/Getting_started and confirm `julia hello-world.jl` works on command line. 
 
-Normally adding a new alias called julia in `.bash_profile` is sufficient but if that does not work, creating a symbolic link to `/usr/local/bin/julia` would definitely work:
-```
-sudo ln julia-9d11f62bcb/bin/julia -sf /usr/local/bin/julia
-```
-
+Normally adding a new alias called julia in `.bash_profile` is sufficient but if that does not work, creating a symbolic link to `/usr/local/bin/julia` would definitely work.
 
 ## Running the codes
 We include preprocessed Movielens 1M data in `ml1m-50-oc` as reference.
