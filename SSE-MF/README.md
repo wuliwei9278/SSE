@@ -20,7 +20,7 @@ Find the path containing julia binary (in extracted folder `julia-9d11f62bcb/bin
 Normally adding a new alias called julia in `.bash_profile` is sufficient but if that does not work, creating a symbolic link to `/usr/local/bin/julia` would definitely work:
 ```
 ln julia-9d11f62bcb/bin/julia -sf /usr/local/bin/julia
-
+```
 
 ### To run MF
 
