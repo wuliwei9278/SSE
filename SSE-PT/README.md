@@ -12,10 +12,10 @@
 Use Command
 
 ```
-  python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" \
-  --user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 \ 
-  --dropout_rate=0.2 --num_head=1 --lr=0.001 --num_epochs=2001 --gpu=0 \
-  --threshold_user=0.08 --threshold_item=0.9 --print_freq=100
+python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" \
+--user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 \
+--dropout_rate=0.2 --num_head=1 --lr=0.001 --num_epochs=2001 --gpu=0 \
+--threshold_user=0.08 --threshold_item=0.9 --print_freq=100
 ```
 , where 
   - `--dataset==ml-1m` specifies dataset name in data folder 
@@ -35,10 +35,10 @@ Use Command
 Change threshold_user and threshold_item to 1.0 or any value over 1.0 would work because it means we set replacement probabilities to 0.0
 
 ```
-  python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" \
-  --user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 \ 
-  --dropout_rate=0.2 --num_head=1 --lr=0.001 --num_epochs=2001 --gpu=0 \
-  --threshold_user=1.0 --threshold_item=1.0 --print_freq=100
+python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" \
+--user_hidden_units=50 --item_hidden_units=50 --num_blocks=2 --maxlen=200 \
+--dropout_rate=0.2 --num_head=1 --lr=0.001 --num_epochs=2001 --gpu=0  \
+--threshold_user=1.0 --threshold_item=1.0 --print_freq=100
 ```
 
 ### To run baseline SASRec
@@ -46,9 +46,9 @@ Change threshold_user and threshold_item to 1.0 or any value over 1.0 would work
 Go to baseline folder `cd baseline` and type below:
 
 ```
-  python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" \
-  --hidden_units=100 --num_blocks=2 --maxlen=200 --dropout_rate=0.2 --num_head=1 \ 
-  --lr=0.001 --num_epochs=2001 --gpu=0 --l2_emb=0.0001
+python main.py --dataset=ml-1m --batch_size=128 --train_dir="default" \
+--hidden_units=100 --num_blocks=2 --maxlen=200 --dropout_rate=0.2 --num_head=1  \
+--lr=0.001 --num_epochs=2001 --gpu=0 --l2_emb=0.0001
 ```
 
 ### Speed Plot for SASRec, PT and SSE-PT as reference
