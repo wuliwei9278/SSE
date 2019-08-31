@@ -1,5 +1,15 @@
-# Stochastic Shared Embeddings for Better Recommendations
+# Stochastic Shared Embeddings: Data-driven Regularization of Embedding Layers
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
+
+Please cite the paper:
+```
+@article{wu2019stochastic,
+  title={Stochastic Shared Embeddings: Data-driven Regularization of Embedding Layers},
+  author={Wu, Liwei and Li, Shuqing and Hsieh, Cho-Jui and Sharpnack, James},
+  journal={arXiv preprint arXiv:1905.10630},
+  year={2019}
+}
+```
 
 ## Description: 
 This repo consists of 3 folders:
