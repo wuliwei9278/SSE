@@ -1,6 +1,6 @@
 # Stochastic Shared Embeddings: Data-driven Regularization of Embedding Layers
 [![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE)
-
+This paper has been accepted to this year's (2019) NeurIPS.
 Please cite the paper:
 ```
 @article{wu2019stochastic,
