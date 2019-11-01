@@ -1,5 +1,88 @@
 from modules import *
+import time
+import random
+import numpy as np
 
+
+class SSE():
+    """ Create a SSE class assuming we know indices for each class"""
+    def __init__(self, idx_img_class, idx_txt_class, sse_prob_img, sse_prob_txt,
+                rho_img, rho_txt, num_img, num_txt):
+        self.idx_img_class = [list(x) for x in idx_img_class]
+        self.idx_txt_class = [list(x) for x in idx_txt_class]
+        self.sse_prob_img = sse_prob_img
+        self.sse_prob_txt = sse_prob_txt
+        self.rho_img = rho_img
+        self.rho_txt = rho_txt
+        self.num_img = num_img
+        self.num_txt = num_txt
+
+    def apply_sse_se(self, batch_idx):
+        sse_batch_idx = []
+        for i in range(len(batch_idx)):
+            batch = batch_idx[i]
+            idx_img = batch[0]
+            idx_txt = batch[1]
+            if random.random() < self.sse_prob_img:
+                idx_img = np.random.randint(0, self.num_img)
+            if random.random() < self.sse_prob_txt:
+                idx_txt = np.random.randint(0, self.num_txt)
+            sse_batch_idx.append((idx_img, idx_txt))			
+        return sse_batch_idx 
+
+    def apply_sse_graph(self, batch_idx, class_labels):
+        # tuple: first being image, second being text
+        #batch_idx = [(2, 7), (4, 5), (1, 3)]
+        #class_labels = [(0, 0), (1, 2), (2, 2)]
+        sse_batch_idx = []
+        new_labels = []
+        for i in range(len(batch_idx)):
+            batch = batch_idx[i]
+            idx_img = batch[0]
+            idx_txt = batch[1]
+            # class labels
+            labels = class_labels[i]
+            label_img = labels[0]
+            label_txt = labels[1]
+            if random.random() < self.sse_prob_img:
+                if random.random() < 1 / self.rho_img:
+                    idx_img = np.random.randint(0, self.num_img)
+                else:
+                    rand_idx = np.random.randint(0, len(self.idx_img_class[label_img]))
+                    idx_img = self.idx_img_class[label_img][rand_idx]
+                    #idx_img = np.random.choice(self.idx_img_class[label_img])
+            if random.random() < self.sse_prob_txt:
+                if random.random() < 1 / self.rho_txt:
+                    idx_txt = np.random.randint(0, self.num_txt)
+                else:
+                    rand_idx = np.random.randint(0, len(self.idx_txt_class[label_txt]))
+                    idx_txt = self.idx_txt_class[label_txt][rand_idx]
+                    #idx_txt = np.random.choice(self.idx_txt_class[label_txt])
+            sse_batch_idx.append((idx_img, idx_txt))
+            if random.random() < 0.5:
+                new_label = (labels[0], labels[0])
+            else:
+                new_label = (labels[1], labels[1])
+            new_labels.append(new_label)
+        return sse_batch_idx, new_labels
+'''
+start_time = time.time()
+idx_img_class = [set([0, 2, 7, 8]), set([4, 5]), set([1, 3, 6])]
+idx_txt_class = [set([0, 2, 7, 8]), set([4, 6]), set([1, 3, 5])]
+batch_idx = [(2, 7), (4, 5), (1, 3)]
+class_labels = [(0, 0), (1, 2), (2, 2)]
+sse_prob = 0.1
+rho = 100
+n = 9
+sse = SSE(idx_img_class, idx_txt_class, sse_prob, sse_prob, rho, rho, n, n)
+for i in range(1000):
+    sse_batch_idx = sse.apply_sse_se(batch_idx)
+    sse_batch_idx, new_labels = sse.apply_sse_graph(batch_idx, class_labels)
+    print(sse_batch_idx, new_labels)
+
+elapsed_time = time.time() - start_time
+print(elapsed_time)
+'''
 
 class Model():
     def __init__(self, usernum, itemnum, args, reuse=tf.AUTO_REUSE):
